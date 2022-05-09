@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-const port = 5000
+const port = process.env.PORT || 5000
 
 interface Ivideo {
     id: number,
