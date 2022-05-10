@@ -44,6 +44,9 @@ app.get('/videos/:videoId', (req, res) => {
 })
 
 app.post('/videos', (req, res) => {
+    if(!req.body.title) {
+        res.send(400)
+    }
     const newVideo: Ivideo = {
         id: videos[videos.length - 1].id + 1,
         title: req.body.title,
@@ -54,6 +57,9 @@ app.post('/videos', (req, res) => {
 })
 
 app.put('/videos/:videoId', (req: Request, res: Response) => {
+    if(!req.body.title) {
+        res.send(400)
+    }
     const id = +req.params.videoId
     const video = videos.find(v => v.id === id)
     if(video) {
