@@ -41,7 +41,15 @@ app.get('/videos/:videoId', (req, res) => {
 
 app.post('/videos', (req, res) => {
     if(!req.body.title) {
-        res.send(400)
+        res.status(400).send({
+            "errorsMessages": [
+                {
+                    "message": "string",
+                    "field": "string"
+                }
+            ],
+            "resultCode": 0
+        })
         return
     }
     const newVideo: Ivideo = {
@@ -55,7 +63,15 @@ app.post('/videos', (req, res) => {
 
 app.put('/videos/:videoId', (req: Request, res: Response) => {
     if(!req.body.title) {
-        res.send(400)
+        res.status(400).send({
+            "errorsMessages": [
+                {
+                    "message": "string",
+                    "field": "string"
+                }
+            ],
+            "resultCode": 0
+        })
         return
     }
     const id = +req.params.videoId
@@ -66,7 +82,6 @@ app.put('/videos/:videoId', (req: Request, res: Response) => {
     } else {
         res.send(404)
     }
-
 })
 
 app.delete('/videos/:videoId', (req, res) => {
@@ -78,12 +93,8 @@ app.delete('/videos/:videoId', (req, res) => {
     } else {
         res.send(404)
     }
-
-
 })
 
 app.listen(port, () => {
-    const a = 's'
-    console.log(a)
     console.log(`Example app listening on port ${port}`)
 })
