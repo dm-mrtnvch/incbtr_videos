@@ -41,7 +41,7 @@ app.get('/videos/:videoId', (req, res) => {
 
 app.post('/videos', (req, res) => {
     if(!req.body.title) {
-        res.status(400).send(res.status(400).send({ errorsMessages: [{ message: "string", field: "title" }], resultCode: 1 }))
+        res.status(400).send({ errorsMessages: [{ message: "string", field: "title" }], resultCode: 1 })
         return
     }
     const newVideo: Ivideo = {
