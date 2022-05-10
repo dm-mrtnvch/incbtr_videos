@@ -41,15 +41,7 @@ app.get('/videos/:videoId', (req, res) => {
 
 app.post('/videos', (req, res) => {
     if(!req.body.title) {
-        res.status(400).send({
-            "errorsMessages": [
-                {
-                    "message": "string",
-                    "field": "string"
-                }
-            ],
-            "resultCode": 0
-        })
+        res.status(400).send(res.status(400).send({ errorsMessages: [{ message: "string", field: "title" }], resultCode: 1 }))
         return
     }
     const newVideo: Ivideo = {
@@ -63,15 +55,7 @@ app.post('/videos', (req, res) => {
 
 app.put('/videos/:videoId', (req: Request, res: Response) => {
     if(!req.body.title) {
-        res.status(400).send({
-            "errorsMessages": [
-                {
-                    "message": "string",
-                    "field": "string"
-                }
-            ],
-            "resultCode": 0
-        })
+        res.status(400).send({ errorsMessages: [{ message: "string", field: "title" }], resultCode: 1 })
         return
     }
     const id = +req.params.videoId
