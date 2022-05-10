@@ -22,16 +22,12 @@ let videos: Ivideo[] = [
 ]
 
 app.get('/', (req: Request, res: Response) => {
-    const raz = 'aaaaaaaaaaaaaaaaaaaaaffaa'
-    console.log('sss')
-    console.log('sss')
-    res.send(raz)
+    res.send('hello')
 })
 
 app.get('/videos', (req: Request, res: Response) => {
     res.send(videos)
 })
-
 
 app.get('/videos/:videoId', (req, res) => {
     const id = +req.params.videoId
@@ -46,6 +42,7 @@ app.get('/videos/:videoId', (req, res) => {
 app.post('/videos', (req, res) => {
     if(!req.body.title) {
         res.send(400)
+        return
     }
     const newVideo: Ivideo = {
         id: videos[videos.length - 1].id + 1,
@@ -59,6 +56,7 @@ app.post('/videos', (req, res) => {
 app.put('/videos/:videoId', (req: Request, res: Response) => {
     if(!req.body.title) {
         res.send(400)
+        return
     }
     const id = +req.params.videoId
     const video = videos.find(v => v.id === id)
