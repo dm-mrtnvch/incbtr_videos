@@ -40,7 +40,7 @@ app.get('/videos/:videoId', (req, res) => {
 })
 
 app.post('/videos', (req, res) => {
-    if(!req.body.title) {
+    if(!req.body.title || req.body.title.length > 40) {
         res.status(400).send({ errorsMessages: [{ message: "string", field: "title" }], resultCode: 1 })
         return
     }
@@ -54,7 +54,7 @@ app.post('/videos', (req, res) => {
 })
 
 app.put('/videos/:videoId', (req: Request, res: Response) => {
-    if(!req.body.title) {
+    if(!req.body.title || req.body.title.length > 40) {
         res.status(400).send({ errorsMessages: [{ message: "string", field: "title" }], resultCode: 1 })
         return
     }
