@@ -7,7 +7,7 @@ export const videosRouter = Router({})
 videosRouter.get('/', (req: Request, res: Response) => {
     res.send(videosRepository.getVideos())
 })
-    .get('/:videoId', (req, res) => {
+    .get('/:videoId', (req: Request, res: Response) => {
         const id = +req.params.videoId
         const video = videosRepository.getVideoById(id)
 
@@ -17,7 +17,7 @@ videosRouter.get('/', (req: Request, res: Response) => {
             res.send(404)
         }
     })
-    .post('', (req, res) => {
+    .post('', (req:Request, res: Response) => {
         if (req.body.title || req.body.title.length < 40) {
             const newVideo = videosRepository.createVideo(req.body.title)
             res.status(201).send(newVideo)
@@ -38,7 +38,7 @@ videosRouter.get('/', (req: Request, res: Response) => {
             res.send(404)
         }
     })
-    .delete('/:videoId', (req, res) => {
+    .delete('/:videoId', (req: Request, res: Response) => {
         const id = +req.params.videoId
         const isDeleted = videosRepository.deleteVideoById(id)
         if (isDeleted) {
