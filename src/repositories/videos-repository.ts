@@ -44,8 +44,8 @@ export const videosRepository = {
     createVideo(title: string) {
         if(title) {
             const newVideo: Ivideo = {
-                id: 12,
-                title: 'blablabla',
+                id: +new Date(),
+                title: title,
                 author: 'author bla'
             }
             videos.push(newVideo)

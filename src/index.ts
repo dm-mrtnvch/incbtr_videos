@@ -7,7 +7,7 @@ import {authMiddleware} from "./middlewares/auth-middleware";
 const app = express()
 app.use(cors())
 app.use(bodyParser.json())
-app.use(authMiddleware)
+// app.use(authMiddleware)
 const port = process.env.PORT || 5000
 
 
